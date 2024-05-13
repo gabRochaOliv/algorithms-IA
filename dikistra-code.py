@@ -1,4 +1,4 @@
-graph = {
+grafo = {
     'Oradea': {'Sibiu': 151, 'Zerind': 71,},
     'Zerind': {'Arad': 75, 'Oradea': 71},
     'Arad': {'Sibiu': 140, 'Timisoara': 118, 'Zerind': 75 },
@@ -21,51 +21,51 @@ graph = {
     'Neamt': {'Iasi': 87}
 }
 
-def dks(graph, start, end):
-    queue = [start]
+def dks(grafo, inicio, fim):
+    fila = [inicio]
 
-    visited = [start]
+    visitados = [inicio]
 
-    cost = {start: 0}
+    custo = {inicio: 0} #diferencial comparado ao breadth
 
-    parents = {}
+    pais = {}
 
-    found = False
+    encontrado = False
 
-    path = {start: [start]}
+    caminho = {inicio: [inicio]}
 
-    while queue:
-        node = queue.pop(0)
+    while fila:
+        no = fila.pop(0)
 
-        if node == end:
-            print("O menor caminho de {} para {} é: {}".format(start, end, ' -> '.join(path[node])))
-            print("O custo foi: ", cost[node])
-            found=True
+        if no == fim:
+            print("O menor caminho de {} para {} é: {}".format(inicio, fim, ' -> '.join(caminho[no])))
+            print("O custo foi: ", custo[no])
+            encontrado=True
             break
 
-        for iterator in graph[node]:
+        for vizinho in grafo[no]:
 
-            if iterator not in visited:
+            if vizinho not in visitados:
 
-                if iterator not in cost or cost[iterator] > cost[node] + graph[node][iterator]:
+                if vizinho not in custo or custo[vizinho] > custo[no] + grafo[no][vizinho]:
 
-                    cost[iterator] = cost[node] + graph[node][iterator]
+                    custo[vizinho] = custo[no] + grafo[no][vizinho]
 
-                    path[iterator] = path[node] + [iterator]
+                    caminho[vizinho] = caminho[no] + [vizinho]
 
-                    queue.append(iterator)
-                queue = sorted(queue, key=lambda x: cost[x])
+                    fila.append(vizinho)
+                fila = sorted(fila, key=lambda x: custo[x])
 
-    if(not found):
+    if not encontrado:
         print("Caminho não encontrado")
 
-start = input("Digite a cidade de origem: ")
-end = input("Digite a cidade de destino: ")
-count=0
-for node in graph:
-    if(node == start or node == end):
-        count+=1
-if count == 2:
-    dks(graph, start, end)
+inicio = input("Digite a cidade de origem: ")
+fim = input("Digite a cidade de destino: ")
+contagem = 0
+for no in grafo:
+    if no == inicio or no == fim:
+        contagem += 1
+if contagem == 2:
+    dks(grafo, inicio, fim)
 else:
     print("Cidade não encontrada")

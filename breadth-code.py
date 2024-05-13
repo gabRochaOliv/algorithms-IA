@@ -1,4 +1,4 @@
-graph = {
+grafo = {
     'Oradea': ['Sibiu', 'Zerind'],
     'Zerind': ['Arad', 'Oradea'],
     'Arad': ['Sibiu', 'Timisoara', 'Zerind'],
@@ -9,11 +9,11 @@ graph = {
     'Craiova': ['Dobreta', 'Pitesti', 'Rimnicu Vilcea'],
     'Sibiu': ['Arad', 'Fagaras', 'Oradea', 'Rimnicu Vilcea'],
     'Rimnicu Vilcea': ['Craiova', 'Pitesti', 'Sibiu'],
-    'Fagaras': ['Bucharest', 'Sibiu'],
-    'Pitesti': ['Bucharest', 'Craiova', 'Rimnicu Vilcea'],
-    'Bucharest': ['Fagaras', 'Giurgiu', 'Pitesti', 'Urziceni'],
-    'Giurgiu': ['Bucharest'],
-    'Urziceni': ['Bucharest', 'Hirsova', 'Vaslui'],
+    'Fagaras': ['Bucareste', 'Sibiu'],
+    'Pitesti': ['Bucareste', 'Craiova', 'Rimnicu Vilcea'],
+    'Bucareste': ['Fagaras', 'Giurgiu', 'Pitesti', 'Urziceni'],
+    'Giurgiu': ['Bucareste'],
+    'Urziceni': ['Bucareste', 'Hirsova', 'Vaslui'],
     'Hirsova': ['Eforie', 'Urziceni'],
     'Eforie': ['Hirsova'],
     'Vaslui': ['Iasi', 'Urziceni'],
@@ -21,51 +21,48 @@ graph = {
     'Neamt': ['Iasi']
 }
 
-def bfs(graph, start, end):
-    queue = [start]
+def busca_em_largura(grafo, inicio, fim):
+    fila = [inicio]
     
-    visited =[start]
+    visitados =[inicio]
 
-    parents = {}
+    pais = {}
     
-    found=False
+    encontrado = False
 
-    while queue:
-        node = queue.pop(0)
+    while fila:
+        no = fila.pop(0)
 
-        if node == end:
-            path = [end]
+        if no == fim:
+            caminho = [fim]
 
-            while end != start:
-                path.insert(0, parents[end])
-                end = parents[end]
+            while fim != inicio:
+                caminho.insert(0, pais[fim])
+                fim = pais[fim]
             
-            found=True
-            print("O menor caminho de {} para {} é: {}".format(start, end, ' -> '.join(path)))
-        for iterator in graph[node]:
-            if iterator not in visited:
+            encontrado = True
+            print("O menor caminho de {} para {} é: {}".format(inicio, fim, ' -> '.join(caminho)))
+            
+        for vizinho in grafo[no]:
+            if vizinho not in visitados:
 
-                visited.append(iterator)
+                visitados.append(vizinho)
 
-                queue.append(iterator)
+                fila.append(vizinho)
 
-                parents[iterator] = node
+                pais[vizinho] = no
 
-    if(not found):
+    if not encontrado:
         print("Caminho não encontrado")
 
 
-start = input("Digite a cidade de origem: ")
-end = input("Digite a cidade de destino: ")
-count=0
-for node in graph:
-    if(node == start or node == end):
-        count+=1
-if count == 2:
-    bfs(graph, start, end)
+inicio = input("Digite a cidade de origem: ")
+fim = input("Digite a cidade de destino: ")
+contador = 0
+for no in grafo:
+    if no == inicio or no == fim:
+        contador += 1
+if contador == 2:
+    busca_em_largura(grafo, inicio, fim)
 else:
     print("Cidade não encontrada")
-
-
-
-
