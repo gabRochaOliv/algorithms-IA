@@ -21,6 +21,8 @@ grafo = {
     'Neamt': {'Iasi': 87}
 }
 
+#como é que ele percorre o grafo
+
 def dks(grafo, inicio, fim):
     fila = [inicio]
 
