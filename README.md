@@ -126,20 +126,3 @@ else:
 ```
 
 Portanto, aqui estamos verificando se o ```contador``` é igual a 2. Se for, chamamos a função ```busca_em_largura(grafo, inicio, fim)```, passando o grafo e as cidades de origem e destino como argumentos. Caso contrário, imprimimos uma mensagem informando que uma das cidades não foi encontrada no grafo.
-
-
-
-
-
-
-
-
-
-
-
-           
-
-
-            
-
-
