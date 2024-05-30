@@ -1,0 +1,10 @@
+Avaliação do melhor algoritmo pra usar no problema do Quebra-cabeça de 8 peças (jogo dos 8):
+
+O algoritmo implementado no código fornecido é a busca em largura (BFS). 
+Este algoritmo explora todos os possíveis movimentos de forma nivelada, 
+começando do estado inicial (8, 5, 4, 2, 7, 1, 3, 6, 0) e explorando 
+todos os estados vizinhos, depois os vizinhos dos vizinhos, e assim 
+por diante, até encontrar o estado final (1, 2, 3, 4, 5, 6, 7, 8, 0).
+
+Teoricamente a busca em largura (BFS) Garante encontrar o caminho mais 
+curto, mas pode consumir muita memória.
