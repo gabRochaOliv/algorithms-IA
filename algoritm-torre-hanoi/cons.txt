@@ -1,0 +1,17 @@
+# Busca em Largura (BFS): 
+Vantagem: Garante encontrar o caminho mais curto (menos passos).
+Desvantagem: Consome mais memória, pois mantém todos os nós em cada nível na memória antes de avançar.
+
+# Busca em Profundidade (DFS): 
+Vantagem: Usa menos memória, pois explora cada caminho até o fim antes de voltar.
+Desvantagem: Pode explorar caminhos longos desnecessariamente e não garante encontrar o caminho mais curto. 
+
+# Resultados Esperados: 
+BFS: Deve encontrar o caminho mais curto do estado inicial (1, 1, 1, 1, 1) até o estado final (3, 3, 3, 3, 3) e 
+mostra o caminho e o número total de buscas necessárias. 
+DFS: Pode encontrar um caminho para o estado final, mas não necessariamente o mais curto e mostra o caminho 
+encontrado e o número total de buscas. 
+
+# Conclusão: BFS é mais eficiente em termos de encontrar o caminho mais curto, mas pode ser menos eficiente em termos 
+de uso de memória. O DFS é mais eficiente em termos de uso de memória, mas pode ser menos eficiente em encontrar o 
+caminho mais curto e pode exigir mais passos.
