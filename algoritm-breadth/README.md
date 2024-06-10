@@ -1,4 +1,4 @@
-## Um pouco sobre o funcionamento de um dos algoritmos: 
+
 # Breadth
 
 Primeiramente vamos analisar o contexto para a construção do código: 
